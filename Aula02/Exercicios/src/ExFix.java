@@ -1,3 +1,4 @@
+
 /*▪ Criar um programa para processar as seguintes informações de um aluno:
 matrícula, nome , nota1, nota2 e se ele está aprovado ou reprovado;
 ▪ Durante a execução calcular a nota final do aluno utilizando a seguinte
@@ -16,35 +17,32 @@ public class ExFix {
     public static void main(String[] args) {
         Scanner ler = new Scanner(System.in);
 
-        int[] matric = new int[5];
-        String[] nome = new String[5];
-        double[] nota1 = new double[5];
-        double[] nota2 = new double[5];
-        double[] notaF = new double[5];
-        boolean[] aprovado = new boolean[5];
+        Aluno[] alunos = new Aluno[5];
 
         for (int i = 0; i < 5; i++) {
+            alunos[i] = new Aluno();
             System.out.println("Digite a Matricula (" + i + ")");
-            matric[i] = ler.nextInt();
+            alunos[i].matric = ler.nextInt();
             ler.nextLine();
             System.out.println("Digite o nome (" + i + ")");
-            nome[i] = ler.nextLine();
+            alunos[i].nome = ler.nextLine();
             System.out.println("Digite a primeira nota (" + i + ")");
-            nota1[i] = ler.nextDouble();
+            alunos[i].nota1 = ler.nextDouble();
             System.out.println("Digite a segunda nota (" + i + ")");
-            nota2[i] = ler.nextDouble();
+            alunos[i].nota2 = ler.nextDouble();
 
-            notaF[i] = (nota1[i] + nota2[i]) / 2;
+            alunos[i].notaF = (alunos[i].nota1 + alunos[i].nota2) / 2;
 
-            aprovado[i] = notaF[i] >= 6;
+            alunos[i].aprovado = alunos[i].notaF >= 6;
         }
 
         for (int i = 0; i < 5; i++) {
-            System.out.println("\nMatricula(" + i + "): " + matric[i]);
-            System.out.println("Nome(" + i + "): " + nome[i]);
-            System.out.println("Aprovado(" + i + "): " + (aprovado[i] ? "(X) Sim ( ) Não " : "( ) Sim (X) Não"));
-            System.out.println("Nota Final(" + i + "): " + notaF[i] + "\n");
+            System.out.println("\nMatricula(" + i + "): " + alunos[i].matric);
+            System.out.println("Nome(" + i + "): " + alunos[i].nome);
+            System.out.println("Aprovado(" + i + "): " + (alunos[i].aprovado ? "(X) Sim ( ) Não " : "( ) Sim (X) Não"));
+            System.out.println("Nota Final(" + i + "): " + alunos[i].notaF + "\n");
         }
+
         ler.close();
 
     }
